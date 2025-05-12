@@ -139,26 +139,8 @@ az webapp create \
   --name BookLibraryApp \
   --deployment-container-image-name myregistry.azurecr.io/book-library-api:v1
 
-
 ```
 
-📂 Folder Structure
-
-```pgsql
-
-/BOOKLIBRARYAPI
-├── Controllers/
-├── Models/
-├── Program.cs
-├── BookLibraryAPI.csproj
-├── Dockerfile
-├── docker-compose.yml
-├── appsettings.json
-├── book-library-frontend/
-│   ├── src/
-│   └── package.json
-
-```
 
 
 

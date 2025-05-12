@@ -40,22 +40,46 @@ public class BookController : ControllerBase
             query = query.Where(b => b.Status == status);
         }
 
-        var results = query.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+        var totalCount = query.Count();
+        var totalPages = (int)Math.Ceiling((double)totalCount / pageSize);
 
-        if (!results.Any())
+        var results = query.OrderBy(b => b.BookId).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+
+        var result = new
         {
-            return NotFound("No books found.");
-        }
+            totalItems = totalCount,
+            totalPages = totalPages,
+            page = page,
+            items = results
+        };
 
-        return Ok(results);
+        return Ok(result);
     }
 
     // Retrieve all books
     [HttpGet]
-    public async Task<IActionResult> GetAllBooks()
+    public async Task<IActionResult> GetAllBooks([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
-        var books = await _context.Books.ToListAsync();
-        return Ok(books);
+        var query = _context.Books.AsQueryable();
+
+        var totalBooks = await query.CountAsync();
+        var totalPages = (int)Math.Ceiling((double)totalBooks / pageSize);
+
+        if (page < 1 || page > totalPages)
+        {
+            return BadRequest("Invalid page number.");
+        }
+
+        var books = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+        return Ok(new
+        {
+            totalItems = totalBooks,
+            totalPages = totalPages,
+            page = page,
+            items = books
+        });
     }
 
     // Add a new book
