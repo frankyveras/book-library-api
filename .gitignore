@@ -1,0 +1,17 @@
+# .NET
+bin/
+obj/
+.vscode/
+*.user
+*.suo
+
+# Docker
+*.tar
+*.log
+docker-compose.override.yml
+
+# Others
+.env
+node_modules/
+.vs/
+
