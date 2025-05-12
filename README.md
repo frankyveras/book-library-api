@@ -58,13 +58,18 @@ Swagger UI: http://localhost:8080/swagger
 
 In a separate terminal:
 
+```bash
 cd book-library-frontend
 npm install
 npm start
+```
+
 
 Visit: http://localhost:3000
 
 🧪 Example Book Object
+
+```bash
 
 {
   "title": "Clean Code",
@@ -78,7 +83,11 @@ Visit: http://localhost:3000
   "status": "love"
 }
 
+```
+
 🐳 Dockerfile
+
+```dockerfile
 
 # Build stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
@@ -98,11 +107,58 @@ COPY --from=build /app/out .
 EXPOSE 80
 ENTRYPOINT ["dotnet", "BookLibraryAPI.dll"]
 
+```
+
+
 
 ☁️ Deploying to Azure (Docker)
 
 This app is ready to be deployed as a Linux container on Azure App Service.
 
 1. Build and tag the Docker image
+
+```bash
+
+docker build -t book-library-api .
+
+```
+
+```bash
+
+docker tag book-library-api myregistry.azurecr.io/book-library-api:v1
+docker push myregistry.azurecr.io/book-library-api:v1
+
+
+```
+
+```bash
+
+az webapp create \
+  --resource-group MyGroup \
+  --plan MyPlan \
+  --name BookLibraryApp \
+  --deployment-container-image-name myregistry.azurecr.io/book-library-api:v1
+
+
+```
+
+📂 Folder Structure
+
+```pgsql
+
+/BOOKLIBRARYAPI
+├── Controllers/
+├── Models/
+├── Program.cs
+├── BookLibraryAPI.csproj
+├── Dockerfile
+├── docker-compose.yml
+├── appsettings.json
+├── book-library-frontend/
+│   ├── src/
+│   └── package.json
+
+```
+
 
 
