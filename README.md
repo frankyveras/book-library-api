@@ -12,12 +12,14 @@ This is a full-stack Book Library project designed to help you manage personal b
 - CORS-enabled for frontend access
 - Dockerized and ready to run in **Azure App Service**
 - SQL Server integration using Entity Framework Core
+- Support for pagination
 
 ### ✅ Frontend (React + Material UI)
 - Search form with inputs for author, ISBN, and status (dropdown)
 - Results displayed in a responsive table
 - API communication using Axios
 - Clear error handling and input filtering
+- Support for pagination
 
 ---
 
