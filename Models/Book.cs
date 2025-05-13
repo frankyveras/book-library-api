@@ -26,14 +26,14 @@ public class Book
     public int CopiesInUse { get; set; }
 
     [Column("type")]
-    public string? Type { get; set; }   // nullable
+    public string? Type { get; set; }   
 
     [Column("isbn")]
-    public string? ISBN { get; set; }   // nullable
+    public string? ISBN { get; set; }
 
     [Column("category")]
-    public string? Category { get; set; } // nullable
+    public string? Category { get; set; }
 
     [Column("status")]
-    public string? Status { get; set; }   // nullable
+    public string? Status { get; set; }
 }

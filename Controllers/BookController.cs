@@ -13,7 +13,7 @@ public class BookController : ControllerBase
         _context = context;
     }
 
-    // Search books based on Author, ISBN, or Type (own/love/want-to-read)
+
     [HttpGet("search")]
     public IActionResult Search([FromQuery] string? author, [FromQuery] string? isbn, [FromQuery] string? type, [FromQuery] string? status, int page = 1, int pageSize = 10)
     {
@@ -57,7 +57,7 @@ public class BookController : ControllerBase
         return Ok(result);
     }
 
-    // Retrieve all books
+
     [HttpGet]
     public async Task<IActionResult> GetAllBooks([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
@@ -82,7 +82,7 @@ public class BookController : ControllerBase
         });
     }
 
-    // Add a new book
+
     [HttpPost]
     public IActionResult AddBook([FromBody] Book book)
     {
@@ -97,7 +97,7 @@ public class BookController : ControllerBase
         return CreatedAtAction(nameof(GetAllBooks), new { id = book.BookId }, book);
     }
 
-    // Update book details
+
     [HttpPut("{id}")]
     public IActionResult UpdateBook(int id, [FromBody] Book updatedBook)
     {
@@ -121,7 +121,7 @@ public class BookController : ControllerBase
         return NoContent();
     }
 
-    // Delete a book
+
     [HttpDelete("{id}")]
     public IActionResult DeleteBook(int id)
     {
