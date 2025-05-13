@@ -7,6 +7,7 @@ This is a full-stack Book Library project designed to help you manage personal b
 ## 🌐 Features
 
 ### ✅ Backend (.NET 8 Web API)
+- List All Books
 - Search books by **author**, **ISBN**, or **status** (`own`, `love`, `want`)
 - Add, update, and delete books
 - CORS-enabled for frontend access
@@ -15,6 +16,7 @@ This is a full-stack Book Library project designed to help you manage personal b
 - Support for pagination
 
 ### ✅ Frontend (React + Material UI)
+- List All Books
 - Search form with inputs for author, ISBN, and status (dropdown)
 - Results displayed in a responsive table
 - API communication using Axios
